@@ -1,0 +1,64 @@
+2b.js
+const express=require('express')
+const app=express()
+var bodyParser=require('body-parser')
+var expressValidator=require('express-validator')
+var urlencodedParser=bodyParser.urlencoded({extended:false})
+app.use(express.static('public'))
+app.use(expressValidator())
+app.use(express.json())
+const { check } = require('express-validator/check')
+
+app.get('/',urlencodedParser,function(req,res){
+    res.sendFile(__dirname+'/index1.html');
+})
+app.post('/pdata', urlencodedParser,function(req,res){
+    req.checkBody({ 
+        'sal': {
+            optional: true,
+            isNumeric: {
+                errorMessage: 'Salary must be a number'
+            }
+        }
+    })
+    req.checkBody({ 
+        'sname': {
+            optional: true,
+            isAlphanumeric: {
+                errorMessage: 'Surname must be a String'
+            }
+        }
+    })
+    req.checkBody({ 
+        'sname': {
+            optional: true,
+            isAlpha: {
+                errorMessage: 'Surname must be a String'
+            }
+        }
+    })
+    req.checkBody('name', 'Name should not be empty').isAlpha().isEmpty();
+    var errors = req.validationErrors();
+    if(errors){
+	res.send('Name required');
+    }
+    else{
+	res.send(`ID: ${req.body.eid}<br/>Name: ${req.body.name}<br/>SurName: ${req.body.sname}<br/> Designation: ${req.body.des}<br/> Salary : ${req.body.sal}`);
+    }
+})
+app.listen(3000);
+
+index.html
+<html>
+    <head></head>
+    <body>
+        <form action='\pdata' method='post'>
+            ID<input type="text" name="eid" /><br/>
+            Name<input type="text" name='name'/><br/>
+	    Sname<input type="text" name='sname'/><br/>
+            Designation<input type="text" name='des'/><br/>
+	    Salary<input type="number" name="sal" /><br/> 	
+            <input type="submit"/>
+        </form>
+    </body>
+</html>

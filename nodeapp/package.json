@@ -1,0 +1,19 @@
+{
+  "name": "calc",
+  "version": "1.1.1",
+  "description": "Calculator",
+  "main": "cal.js",
+  "scripts": {
+    "test": "test",
+"start":"node calc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "uk"
+  },
+  "keywords": [
+    "cal"
+  ],
+  "author": "13CS070",
+  "license": "UNLICENSED"
+}

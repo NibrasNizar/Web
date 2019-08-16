@@ -1,0 +1,23 @@
+const xx = [1,2,3,4,5];
+
+function fixStart(stringy) {
+  const firstLetter = stringy[0].toLowerCase();
+  let endOfWord = stringy.slice(1)
+  for (let i = 0; i < endOfWord.length; i++) {
+    if (endOfWord[i] === firstLetter) {
+      endOfWord = endOfWord.replace(endOfWord[i], '*');
+    }
+  }
+  console.log(firstLetter + endOfWord);
+} 
+
+fixStart("Evan Emenegger")
+
+
+function nixStart(str) {
+  const letterOne = str[0];
+  let endOfWord = str.slice(1);
+  console.log(letterOne + endOfWord.replace(new RegExp(letterOne, 'g'), '*'));
+}
+
+nixStart("Evan Emenegger")

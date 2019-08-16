@@ -1,0 +1,33 @@
+2a.html
+<!doctype html>
+<html>
+<head>
+<script>
+function Calculate(price,k,t)
+{
+var net = 0.0  //using sgpa,k,cgpa of the outer function
+var temp
+function net_c()
+	{
+    	for (var j=1;j<=k;j++)
+    	{
+    	net = net + price[j]
+    	}   	 
+    	temp = net * (t/100)
+    	alert("Total Tax added :"+temp+"\n Tax : "+t+"%")
+    	net = net + temp
+    	alert("Net Price of "+k+" products : "+net)
+	}
+    	net_c()
+}
+var k=parseInt(prompt("Enter Number of Products ",1))
+var t=parseInt(prompt("Enter Tax Percentage ",1))
+var price = []
+for(var j=1;j<=k;j++)
+{
+	price[j] =parseFloat(prompt("Enter Price for " +j,10.0))
+}
+Calculate(price,k,t)
+</script>
+</head>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "modapp",
+  "version": "1.0.0",
+  "description": "Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+	"start":"node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xx"
+  },
+  "keywords": [
+    "yy"
+  ],
+  "author": "13CS070",
+  "license": "UNLICENSED"
+}

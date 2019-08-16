@@ -1,0 +1,19 @@
+{
+  "name": "rit_npm",
+  "version": "2.1.0",
+  "description": "Hello From Rit",
+  "main": "npm_node.js",
+  "scripts": {
+    "test": "test",
+	"start":"node hello-node.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "uk"
+  },
+  "keywords": [
+    "hello"
+  ],
+  "author": "RIT_Web",
+  "license": "UNLICENSED"
+}

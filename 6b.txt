@@ -1,0 +1,53 @@
+q6b.js
+var express = require('express')
+var app = express()
+app.use(express.static('public'))
+
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/index.html')
+})
+app.get('/karnataka.html', function(req, res){
+	res.sendFile(__dirname + '/cse.html')
+})
+app.get('/maharastra.html', function(req, res){
+	res.sendFile(__dirname + '/civil.html')
+})
+
+app.get('/delhi.html', function(req, res){
+	res.sendFile(__dirname + '/me.html')
+})
+var server = app.listen(5000)
+
+index.html
+<html>
+<body bgcolor = "green">
+Hello
+<a href = "cse.html">Computer Science and Engineering</a>
+<a href = "civil.html">Civil Engineering</a>
+<a href = "me.html">Medical Electronics</a>
+</body>
+</html>
+
+cse.html
+<html>
+<body bgcolor = "blue">
+Computer Science and Engineering
+HOD : XYZ
+</body>
+</html>
+
+civil.html
+<html>
+<body bgcolor = "red">
+Civil Engineering
+HOD : ABC
+</body>
+</html>
+
+me.html
+<html>
+<body bgcolor = "yellow">
+Medical Electronics
+HOD : PQR
+</body>
+</html>

@@ -1,0 +1,102 @@
+3.a)
+<!doctype html>
+<head>
+<script type="text/javascript">
+function Calculate()
+{
+}
+Calculate.prototype.add = function(x,y){
+  this.sum = parseInt(y) + parseInt(x);
+ display_value.innerHTML=this.sum;
+}
+
+Calculate.prototype.multiply = function(x,y){
+  this.sum = parseInt(y) * parseInt(x);
+ display_value.innerHTML= this.sum;
+}
+ 
+Calculate.prototype.subtract =function(x,y){
+  this.sum =parseInt(y) - parseInt(x);
+ display_value.innerHTML= this.sum;
+}
+
+Calculate.prototype.divide =function(x,y){
+  this.sum =parseInt(y) / parseInt(x);
+ display_value.innerHTML= this.sum;
+}
+
+var C=new Calculate();
+function call()
+{
+operator=document.getElementById('op').value;
+ 
+if(operator == "+")    C.add(document.getElementById('v2').value,document.getElementById('v1').value);
+
+if(operator == "-")
+C.subtract(document.getElementById('v2').value,document.getElementById('v1').value);
+
+if(operator == "*")
+C.multiply(document.getElementById('v2').value,document.getElementById('v1').value);
+
+if(operator == "/")  C.divide(document.getElementById('v2').value,document.getElementById('v1').value);
+}
+</script></head>
+
+<body>
+<form>
+Value 1 <input type="text" id="v1" name="v1"> <br>
+Operator<input type="text" id="op" name="op"> <br>
+Value 2 <input type="text" id="v2" name="v2"> <br>
+<input type="button" onclick="call()" value="Calculate">
+</form>
+<p> Answer: <span id = "display_value"></span> </p>
+</body></html>
+
+OR
+
+<html><body><script>
+var BaseCalculator = function() {
+   this.type="BaseCalc"
+   }
+
+BaseCalculator.prototype = {
+   add: function(x, y)
+   {
+   	return x + y
+   },
+   sub: function(x, y)
+   {
+   	return x - y
+   }
+}
+
+var Calculator = function () {
+   this.type="Calc"
+   this.mul = function(x,y) {return x*y}
+   this.div = function(x,y) {return x/y}
+   this.mod = function(x,y) {return x%y}
+}
+ 
+Calculator.prototype = new BaseCalculator()
+while(1)
+{
+var n1=parseInt(prompt("Enter the first number"))
+var n2=parseInt(prompt("Enter the second number"))
+var calc = new Calculator()
+
+var ch=prompt("Choose an Operation: \n1:ADD \n2:SUBTRACT \n3:MULTIPLY \n4:DIVIDE \n5:MOD")
+if (ch==1)
+alert(calc.add(n1,n2))
+if (ch==2)
+alert(calc.sub(n1,n2))
+if (ch==3)
+alert(calc.mul(n1,n2))
+if (ch==4)
+alert(calc.div(n1,n2))
+if (ch==5)
+alert(calc.mod(n1,n2))
+else
+break
+}
+</script></body></html>
+

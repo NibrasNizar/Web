@@ -1,0 +1,71 @@
+4b.js
+var express = require('express')
+var app = express()
+
+app.use(express.static('public'));
+
+app.get('/index.html', function(req, res){
+	res.sendFile(__dirname + '/index.html');
+})
+
+app.get('/home.html', function(req, res){
+	res.sendFile(__dirname + '/'+'home.html');
+})
+
+app.get('/registration.html', function(req, res){
+	res.sendFile(__dirname + '/'+'registration.html');
+})
+
+app.get('/anouncements.html', function(req, res){
+	res.sendFile(__dirname + '/'+'anouncements.html');
+})
+
+app.get('/contact.html', function(req, res){
+	res.sendFile(__dirname + '/'+'contact.html');
+})
+
+
+
+ app.listen(5000);
+
+index.html
+<html>
+<body>
+<a href = "home.html">Home</a>
+<a href = "registration.html">Registration</a>
+<a href = "anouncements.html">Anouncements</a>
+<a href = "contact.html">Contact</a>
+</body>
+</html>
+
+home.html
+<html>
+<body> 
+this is home
+<a href="index.html">Index</a>
+</body
+</html>
+
+anouncements.html
+<html>
+<body> 
+This is Anouncements
+<a href="index.html">Index</a>
+</body
+</html>
+
+registration.html
+<html>
+<body> 
+This is Registration
+<a href="index.html">Index</a>
+</body
+</html>
+
+contact.html
+<html>
+<body>
+ this is contact
+<a href="index.html">Index</a>
+</body
+</html>

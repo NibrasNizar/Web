@@ -1,0 +1,60 @@
+9b.html
+<html>
+<body>
+<form action="insert" method="get"><br>
+Username<input type="text" id="usn" name="usn"><br>
+Semester<input type="number" id="sem" name="sem"><br>
+Branch<input type="text" id="branch" name="branch"><br>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
+9b.js
+
+var express = require('express');
+var app=express();
+var MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect("mongodb://127.0.0.1/college",function(err,db)
+{
+ if(!err){
+console.log("we are connected");
+app.use(express.static('public'));
+
+app.get('/9b.html', function(req,res)
+{
+res.sendFile(__dirname+'/'+'9b.html');
+});
+
+app.get('/insert',function(req,res)
+{
+var usn=req.query.usn;
+var sem=req.query.sem;
+var branch=req.query.branch;
+db.collection('college1').insert({usn:usn,sem:sem,branch:branch});
+res.end(JSON.stringify(req.query));
+});
+
+app.get('/displaystud',function(req,res)
+{
+db.collection('college1').find({branch:'cse',sem:'6'}).sort().toArray(
+function(err,data){
+console.log(data);
+res.end(JSON.stringify(data));
+});
+});
+
+
+app.get('/display',function(req,res)
+{
+db.collection('college1').find().sort().toArray(
+function(err,data){
+console.log(data);
+res.end(JSON.stringify(data));
+});
+});
+
+app.listen(4009);
+}
+});
